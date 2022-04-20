@@ -5,12 +5,12 @@
 #include <ranges>
 
 std::string Files::read_file(const std::string &filename) {
-    std::ifstream file{filename};
+    std::string str(Files::file_size(filename), 0);
+    std::ifstream file(filename);
 
-    return std::string{
-        std::istreambuf_iterator<char>{file},
-        std::istreambuf_iterator<char>{}
-    };
+    file.read(str.data(), str.size());
+
+    return str;
 };
 
 void Files::write_file(const std::string &filename, const std::string &data, const bool app) {
@@ -19,12 +19,12 @@ void Files::write_file(const std::string &filename, const std::string &data, con
 };
 
 std::string Files::read_binary_file(const std::string &filename) {
-    std::ifstream file{filename, std::ios::binary};
+    std::string str(Files::file_size(filename), 0);
+    std::ifstream file(filename, std::ios::binary);
 
-    return std::string{
-        std::istreambuf_iterator<char>{file},
-        std::istreambuf_iterator<char>{}
-    };
+    file.read(str.data(), str.size());
+
+    return str;
 };
 
 void Files::write_binary_file(const std::string &filename, const std::string &data, const bool app) {
@@ -55,4 +55,12 @@ std::vector<std::string> Files::read_filenames(const std::string &path, const bo
     }
 
     return filenames;
+}
+
+std::size_t Files::file_size(const std::string &filename) {
+    std::ifstream f{filename};
+
+    f.seekg(0, std::ios::end);
+
+    return static_cast<std::size_t>(f.tellg());
 }

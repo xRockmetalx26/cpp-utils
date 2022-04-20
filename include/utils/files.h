@@ -25,6 +25,7 @@ public:
     static void write_binary_file(const std::string &filename, const std::string &data, bool app = false);
 
     static std::vector<std::string> read_filenames(const std::string &path, bool extension = true);
+    static std::size_t file_size(const std::string &filename);
 };
 
 #endif // FILES_H

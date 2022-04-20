@@ -1,7 +1,4 @@
-#include <iostream>
-#include <thread>
-#include <sstream>
-#include <iomanip>
+#include <bits/stdc++.h>
 
 #include <utils/timer.h>
 #include <utils/arrays.h>
@@ -13,17 +10,23 @@
 #include <utils/crypto/convert.h>
 #include <utils/types.h>
 #include <utils/vectors.h>
-#include <ranges>
 
-int main() {
+void test_timer() {
     Timer timer{};
-    const auto data = Files::read_file("data/data");
+    std::size_t time{};
+    std::string data = "";
 
     timer.reset();
+    //time = file_size1("data/data");
+    std::cout << time << ", " << timer.elapsed_time() << std::endl;
 
-    std::cout << timer.elapsed_time() << std::endl;
+    timer.reset();
+    //time = file_size2("data/data");
+    std::cout << time << ", " << timer.elapsed_time() << std::endl;
+}
 
-    std::cout << timer.elapsed_time() << std::endl;
+int main() {
+    test_timer();
 
     return 0;
 }
