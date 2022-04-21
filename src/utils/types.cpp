@@ -3,8 +3,8 @@
 #include <sstream>
 
 bool Types::is_double(const std::string &str) {
-    std::stringstream stream{str};
-    double number{};
+    std::istringstream stream{str};
+    double number;
 
     stream >> std::noskipws >> number;
 

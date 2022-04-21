@@ -8,13 +8,13 @@
 #include <utils/vectors.h>
 
 std::vector<std::string> Strings::split(const std::string &str, const std::string &delim) {
-    static auto to_str{[](auto&& rng) {
-        return std::string{&*std::begin(rng), static_cast<std::size_t>(std::ranges::distance(rng))};
-    }};
+    auto to_str = [](auto&& rng) {
+        return std::string{ &*std::begin(rng), static_cast<std::size_t>(std::ranges::distance(rng)) };
+    };
 
-    const auto ranges{std::views::split(str, delim) | std::views::transform(to_str)};
+    const auto ranges{ std::views::split(str, delim) | std::views::transform(to_str) };
 
-    return std::vector<std::string>{std::ranges::begin(ranges), std::ranges::end(ranges)};
+    return std::vector<std::string>{ std::ranges::begin(ranges), std::ranges::end(ranges) };
 }
 
 std::vector<std::string> Strings::filter(const std::vector<std::string> &vect, const std::string &term, const bool sensitive) {
@@ -22,7 +22,7 @@ std::vector<std::string> Strings::filter(const std::vector<std::string> &vect, c
         return Strings::contains(str, term, sensitive);
     });
 
-    return std::vector<std::string>{std::begin(ranges), std::end(ranges)};
+    return std::vector<std::string>{ std::begin(ranges), std::end(ranges) };
 }
 
 std::string Strings::to_lower(const std::string &str) {
@@ -30,7 +30,7 @@ std::string Strings::to_lower(const std::string &str) {
         return static_cast<char>(std::tolower(c));
     });
 
-    return std::string{std::ranges::begin(ranges), std::ranges::end(ranges)};
+    return std::string{ std::ranges::begin(ranges), std::ranges::end(ranges) };
 }
 
 std::string Strings::to_upper(const std::string &str) {
@@ -38,7 +38,7 @@ std::string Strings::to_upper(const std::string &str) {
         return static_cast<char>(std::toupper(c));
     });
 
-    return std::string{std::ranges::begin(ranges), std::ranges::end(ranges)};
+    return std::string{ std::ranges::begin(ranges), std::ranges::end(ranges) };
 }
 
 bool Strings::contains(const std::string &str, const std::string &term, const bool sensitive) {

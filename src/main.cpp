@@ -11,6 +11,16 @@
 #include <utils/types.h>
 #include <utils/vectors.h>
 
+class Test {
+public:
+
+    Test() { std::cout << "()" << std::endl;}
+    Test(const Test &) { std::cout << "COPY ()" << std::endl;}
+    Test(const Test &&) { std::cout << "MOVE ()" << std::endl;}
+    Test& operator = (const Test &) { std::cout << "COPY =" << std::endl;}
+    Test& operator = (const Test &&) { std::cout << "MOVE =" << std::endl;}
+};
+
 void test_timer() {
     Timer timer{};
     std::size_t time{};
@@ -26,7 +36,8 @@ void test_timer() {
 }
 
 int main() {
-    test_timer();
+    std::string pene{10, '\0'};
+    auto t = Test();
 
     return 0;
 }
