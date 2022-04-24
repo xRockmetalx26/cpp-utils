@@ -36,8 +36,7 @@ void test_timer() {
 }
 
 int main() {
-    std::string pene{10, '\0'};
-    auto t = Test();
+    std::cout << Strings::replace("afsfasdfaasdaadbsdfsaylkgnaogba", "a", "\\") << ":" << std::endl;
 
     return 0;
 }
