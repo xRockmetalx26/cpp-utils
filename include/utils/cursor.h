@@ -7,16 +7,7 @@
 
 #include <cstddef>
 
-class Cursor {
-public:
-
-    Cursor() = delete;
-    Cursor(const Cursor &) = delete;
-    Cursor(const Cursor &&) = delete;
-    Cursor& operator = (const Cursor &) = delete;
-    Cursor& operator = (const Cursor &&) = delete;
-    ~Cursor() = delete;
-
+namespace Cursor {
     static void set_position(std::size_t x, std::size_t y);
 };
 

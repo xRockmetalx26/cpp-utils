@@ -8,16 +8,7 @@
 #include <iostream>
 #include <vector>
 
-class Vectors {
-public:
-
-    Vectors() = delete;
-    Vectors(const Vectors &) = delete;
-    Vectors(const Vectors &&) = delete;
-    Vectors& operator = (const Vectors &) = delete;
-    Vectors& operator = (const Vectors &&) = delete;
-    ~Vectors() = delete;
-
+namespace Vectors {
     template<class T>
     static bool contains(const std::vector<T> &vect, const T &value);
 

@@ -6,7 +6,7 @@
 #include <openssl/evp.h>
 #include <openssl/err.h>
 
-void AES::handleErrors() {
+void handleErrors() {
     ERR_print_errors_fp( stderr );
     abort();
 }
@@ -30,7 +30,7 @@ bool AES::is_valid(const std::string &key, const std::string &iv, const std::siz
     return true;
 }
 
-std::string AES::encrypt(const std::string &str, const std::string &key, const std::string iv, const std::size_t buffer_len) {
+std::string AES::encrypt(const std::string &str, const std::string &key, const std::string iv) {
     auto context = EVP_CIPHER_CTX_new();
 
     if(not context) {
@@ -41,7 +41,7 @@ std::string AES::encrypt(const std::string &str, const std::string &key, const s
         handleErrors();
     }
 
-    unsigned char buffer[ buffer_len ];
+    unsigned char buffer[ (str.size() / 16 + 2) * 16 ];
     int len;
 
     if(EVP_EncryptUpdate(context, buffer, &len, (const unsigned char*) str.c_str(), str.size()) != 1) {
@@ -59,7 +59,7 @@ std::string AES::encrypt(const std::string &str, const std::string &key, const s
     return std::string{ buffer, buffer + encrypted_text_len + len };
 }
 
-std::string AES::decrypt(const std::string &str, const std::string &key, const std::string &iv, const std::size_t buffer_len) {
+std::string AES::decrypt(const std::string &str, const std::string &key, const std::string &iv) {
     auto context = EVP_CIPHER_CTX_new();
 
     if(not context) {
@@ -70,7 +70,7 @@ std::string AES::decrypt(const std::string &str, const std::string &key, const s
         handleErrors();
     }
 
-    unsigned char buffer[ buffer_len ];
+    unsigned char buffer[ (str.size() / 16 + 2) * 16 ];
     int len;
 
     if(EVP_DecryptUpdate(context, buffer, &len, (unsigned char*) str.c_str(), str.length()) != 1) {

@@ -7,16 +7,7 @@
 
 #define PI 3.14159265359
 
-class Angle {
-public:
-
-    Angle() = delete;
-    Angle(const Angle &) = delete;
-    Angle(const Angle &&) = delete;
-    Angle& operator = (const Angle &) = delete;
-    Angle& operator = (const Angle &&) = delete;
-    ~Angle() = delete;
-
+namespace Angle {
     static double to_radians(double degrees);
     static double to_degrees(double radians);
 };

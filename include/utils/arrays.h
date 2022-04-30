@@ -9,15 +9,7 @@
 #include <cstddef>
 
 template<class T>
-class Arrays {
-public:
-
-    Arrays() = delete;
-    Arrays(const Arrays &) = delete;
-    Arrays(const Arrays &&) = delete;
-    Arrays& operator = (const Arrays &) = delete;
-    Arrays& operator = (const Arrays &&) = delete;
-
+namespace Arrays {
     static T* create_array(std::size_t size);
     static T** create_matrix(std::size_t rows, std::size_t columns);
 

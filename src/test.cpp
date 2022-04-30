@@ -14,11 +14,25 @@
 class Test {
 public:
 
-    Test() { std::cout << "()" << std::endl;}
-    Test(const Test &) { std::cout << "COPY ()" << std::endl;}
-    Test(const Test &&) { std::cout << "MOVE ()" << std::endl;}
-    Test& operator = (const Test &) { std::cout << "COPY =" << std::endl;}
-    Test& operator = (const Test &&) { std::cout << "MOVE =" << std::endl;}
+    Test() {
+        std::cout << "()" << std::endl;
+    }
+
+    Test(const Test &) {
+        std::cout << "COPY ()" << std::endl;
+    }
+
+    Test(const Test &&) {
+        std::cout << "MOVE ()" << std::endl;
+    }
+
+    Test& operator = (const Test &) {
+        std::cout << "COPY =" << std::endl; return *this;
+    }
+
+    Test& operator = (const Test &&) {
+        std::cout << "MOVE =" << std::endl;
+    }
 };
 
 void test_timer() {
@@ -32,7 +46,7 @@ void test_timer() {
 
     timer.reset();
     //time = file_size2("data/data");
-    std::cout << time << ", " << timer.elapsed_time() << std::endl;
+    std::cout << time << ", ssss" << timer.elapsed_time() << std::endl;
 }
 
 int main() {

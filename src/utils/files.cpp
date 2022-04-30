@@ -7,7 +7,6 @@
 std::string Files::read_file(const std::string &filename) {
     std::string str( Files::file_size(filename), '\0' );
     std::ifstream file{ filename };
-
     file.read(str.data(), str.size());
 
     return str;
@@ -15,14 +14,12 @@ std::string Files::read_file(const std::string &filename) {
 
 void Files::write_file(const std::string &filename, const std::string &data, const bool append) {
     std::ofstream file{ filename, (append) ? std::ios::app : std::ios::out };
-
     file << data;
 };
 
 std::string Files::read_binary_file(const std::string &filename) {
     std::string str( Files::file_size(filename), 0 );
     std::ifstream file{ filename, std::ios::binary };
-
     file.read(str.data(), str.size());
 
     return str;
@@ -30,7 +27,6 @@ std::string Files::read_binary_file(const std::string &filename) {
 
 void Files::write_binary_file(const std::string &filename, const std::string &data, const bool append) {
     std::ofstream file{ filename, std::ios::binary | ((append) ? std::ios::app : std::ios::out) };
-
     file << data;
 };
 
@@ -55,6 +51,26 @@ std::vector<std::string> Files::read_filenames(const std::string &path, const bo
             }
         }
     }
+
+    return filenames;
+}
+
+std::vector<std::string> Files::read_filenames_include(const std::string &path, const std::string &format, bool extension) {
+    auto filenames = Files::read_filenames(path, extension);
+
+    std::erase_if(filenames, [format](const auto &filename) {
+        return not Strings::to_lower(filename).ends_with(Strings::to_lower("." + format));
+    });
+
+    return filenames;
+}
+
+std::vector<std::string> Files::read_filenames_exclude(const std::string &path, const std::string &format, bool extension) {
+    auto filenames = Files::read_filenames(path, extension);
+
+    std::erase_if(filenames, [format](const auto &filename) {
+        return Strings::to_lower(filename).ends_with(Strings::to_lower("." + format));
+    });
 
     return filenames;
 }

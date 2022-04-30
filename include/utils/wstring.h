@@ -7,17 +7,8 @@
 
 #include <codecvt>
 
-class WString {
-public:
-
+namespace WString {
     using convert = std::codecvt_utf8<wchar_t>;
-
-    WString() = delete;
-    WString(const WString &) = delete;
-    WString(const WString &&) = delete;
-    WString& operator = (const WString &) = delete;
-    WString& operator = (const WString &&) = delete;
-    ~WString() = delete;
 
     static std::string to_string(const std::wstring &wstr);
     static std::wstring to_wstring(const std::string &str);

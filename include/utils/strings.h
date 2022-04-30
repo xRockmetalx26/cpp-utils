@@ -8,16 +8,7 @@
 #include <string>
 #include <vector>
 
-class Strings {
-public:
-
-    Strings() = delete;
-    Strings(const Strings &) = delete;
-    Strings(const Strings &&) = delete;
-    Strings& operator = (const Strings &) = delete;
-    Strings& operator = (const Strings &&) = delete;
-    ~Strings() = delete;
-
+namespace Strings {
     static std::vector<std::string> split(const std::string& str, const std::string &delim);
 
     static std::vector<std::string> filter(const std::vector<std::string> &vect, const std::string &term = " ", bool sensitive = false);

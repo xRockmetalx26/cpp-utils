@@ -75,19 +75,11 @@ std::string Strings::trim(const std::string &str) {
 std::string Strings::left_trim(const std::string &str) {
     auto position = str.find_first_not_of(' ');
 
-    if(position == std::string::npos) {
-        return "";
-    }
-
-    return str.substr(position, str.size());
+    return (position != std::string::npos) ? str.substr(0, position) : "";
 }
 
 std::string Strings::right_trim(const std::string &str) {
     auto position = str.find_last_not_of(' ');
 
-    if(position == std::string::npos) {
-        return "";
-    }
-
-    return str.substr(0, position);
+    return (position != std::string::npos) ? str.substr(0, position) : "";
 }

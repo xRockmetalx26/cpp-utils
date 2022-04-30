@@ -7,16 +7,7 @@
 
 #include <string>
 
-class Types {
-public:
-
-    Types() = delete;
-    Types(const Types &) = delete;
-    Types(const Types &&) = delete;
-    Types& operator = (const Types &) = delete;
-    Types& operator = (const Types &&) = delete;
-    ~Types() = delete;
-
+namespace Types {
     static bool is_double(const std::string &std_string);
 };
 
