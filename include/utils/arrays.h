@@ -10,24 +10,13 @@
 
 namespace Arrays {
     template<class T>
-    T* create_array(std::size_t size);
+    T* create_array(std::size_t len);
 
     template<class T>
-    T** create_matrix(std::size_t rows, std::size_t columns);
-
-
-    template<class T>
-    void delete_array(T *array);
+    void delete_array(T **matrix);
 
     template<class T>
-    void delete_matrix(T **matrix);
-
-
-    template<class T>
-    void print_array(T *first, T *last, std::ostream &os = std::cout);
-
-    template<class T>
-    void print_matrix(T **first, T **last, std::size_t columns, std::ostream &os = std::cout);
+    std::string to_string(T *first, T *last);
 };
 
 #include <utils/tcc/arrays.tcc>
