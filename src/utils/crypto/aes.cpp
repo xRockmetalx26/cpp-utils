@@ -20,8 +20,8 @@ bool validate(const std::string &str, const std::string &key, const std::string 
         throw std::runtime_error{ "ERROR: key length must be greater than zero." };
     }
 
-    if(iv.length() < 1) {
-        throw std::runtime_error{ "ERROR: iv length must be greater than zero." };
+    if(iv.length() != 16) {
+        throw std::runtime_error{ "ERROR: iv length must be 16." };
     }
 
     return true;
@@ -83,6 +83,8 @@ std::string AES::decrypt(const std::string &str, const std::string &key, const s
     if(EVP_DecryptFinal_ex(context, buffer + len, &len) != 1) {
         handleErrors();
     }
+
+    std::cout << "aca" << std::endl;
 
     EVP_CIPHER_CTX_free(context);
 
