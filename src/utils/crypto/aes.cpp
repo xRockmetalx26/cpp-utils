@@ -11,7 +11,7 @@ void handleErrors() {
     abort();
 }
 
-bool is_valid(const std::string &str, const std::string &key, const std::string &iv) {
+bool validate(const std::string &str, const std::string &key, const std::string &iv) {
     if(str.length() < 1) {
         throw std::runtime_error{ "ERROR: string length must be greater than zero." };
     }
@@ -28,7 +28,7 @@ bool is_valid(const std::string &str, const std::string &key, const std::string 
 }
 
 std::string AES::encrypt(const std::string &str, const std::string &key, const std::string iv) {
-    if(is_valid(str, key, iv));
+    validate(str, key, iv);
 
     auto context = EVP_CIPHER_CTX_new();
 
@@ -59,7 +59,7 @@ std::string AES::encrypt(const std::string &str, const std::string &key, const s
 }
 
 std::string AES::decrypt(const std::string &str, const std::string &key, const std::string &iv) {
-    if(is_valid(str, key, iv));
+    validate(str, key, iv);
 
     auto context = EVP_CIPHER_CTX_new();
 

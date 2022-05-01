@@ -52,7 +52,7 @@ void test_timer() {
 }
 
 int main() {
-    std::cout << AES::encrypt(std::string{}, "123", "123") << std::endl;
+    std::cout << AES::decrypt(AES::encrypt(std::string{"pene"}, "123", "123"), "123", "123") << std::endl;
 
     return 0;
 }
