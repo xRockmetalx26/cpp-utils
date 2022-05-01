@@ -84,8 +84,6 @@ std::string AES::decrypt(const std::string &str, const std::string &key, const s
         handleErrors();
     }
 
-    std::cout << "aca" << std::endl;
-
     EVP_CIPHER_CTX_free(context);
 
     return std::string{ buffer, buffer + decrypted_txt_len + len };
