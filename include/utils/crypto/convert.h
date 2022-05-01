@@ -8,8 +8,8 @@
 #include <string>
 
 namespace Convert {
-    static std::string to_hexadecimal(const std::string &str);
-    static std::string to_bytes(const std::string &str);
+    std::string to_hexadecimal(const std::string &str);
+    std::string to_bytes(const std::string &str);
 };
 
 #endif // CONVERT_H

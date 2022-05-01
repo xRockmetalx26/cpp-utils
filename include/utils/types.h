@@ -8,7 +8,7 @@
 #include <string>
 
 namespace Types {
-    static bool is_double(const std::string &std_string);
+    bool is_double(const std::string &std_string);
 };
 
 #endif // TYPES_H

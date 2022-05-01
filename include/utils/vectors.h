@@ -10,13 +10,13 @@
 
 namespace Vectors {
     template<class T>
-    static bool contains(const std::vector<T> &vect, const T &value);
+    bool contains(const std::vector<T> &vect, const T &value);
 
     template<class TI, class TO>
-    static std::vector<TO> convert(const std::vector<TI> &vect);
+    std::vector<TO> convert(const std::vector<TI> &vect);
 
     template<class T>
-    static void print(const std::vector<T> &vect, std::ostream &os = std::cout);
+    void print(const std::vector<T> &vect, std::ostream &os = std::cout);
 };
 
 #include <utils/tcc/vectors.tcc>

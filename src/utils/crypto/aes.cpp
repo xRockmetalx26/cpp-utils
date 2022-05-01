@@ -2,35 +2,34 @@
 
 #include <iostream>
 #include <iomanip>
-
+#include <exception>
 #include <openssl/evp.h>
 #include <openssl/err.h>
 
 void handleErrors() {
-    ERR_print_errors_fp( stderr );
+    ERR_print_errors_fp(stderr);
     abort();
 }
 
-bool AES::is_valid(const std::string &key, const std::string &iv, const std::size_t buffer_len) {
-    if(key.length() != 32) {
-        std::cerr << "ERROR: The key must be 256 bits (32 bytes)" << std::endl;
-        return false;
+bool is_valid(const std::string &str, const std::string &key, const std::string &iv) {
+    if(str.length() < 1) {
+        throw std::runtime_error{ "ERROR: string length must be greater than zero." };
     }
 
-    if(iv.length() != 16) {
-        std::cerr << "ERROR: The iv must be 128 bits (16 bytes)" << std::endl;
-        return false;
+    if(key.length() < 1) {
+        throw std::runtime_error{ "ERROR: key length must be greater than zero." };
     }
 
-    if(buffer_len < 1) {
-        std::cerr << "ERROR: The buffer size must be greater than 0" << std::endl;
-        return false;
+    if(iv.length() < 1) {
+        throw std::runtime_error{ "ERROR: iv length must be greater than zero." };
     }
 
     return true;
 }
 
 std::string AES::encrypt(const std::string &str, const std::string &key, const std::string iv) {
+    if(is_valid(str, key, iv));
+
     auto context = EVP_CIPHER_CTX_new();
 
     if(not context) {
@@ -60,6 +59,8 @@ std::string AES::encrypt(const std::string &str, const std::string &key, const s
 }
 
 std::string AES::decrypt(const std::string &str, const std::string &key, const std::string &iv) {
+    if(is_valid(str, key, iv));
+
     auto context = EVP_CIPHER_CTX_new();
 
     if(not context) {

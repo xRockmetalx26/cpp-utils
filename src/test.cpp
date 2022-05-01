@@ -27,11 +27,13 @@ public:
     }
 
     Test& operator = (const Test &) {
-        std::cout << "COPY =" << std::endl; return *this;
+        std::cout << "COPY =" << std::endl;
+        return *this;
     }
 
     Test& operator = (const Test &&) {
         std::cout << "MOVE =" << std::endl;
+        return *this;
     }
 };
 
@@ -50,7 +52,7 @@ void test_timer() {
 }
 
 int main() {
-    std::cout << Strings::replace("afsfasdfaasdaadbsdfsaylkgnaogba", "a", "\\") << ":" << std::endl;
+    std::cout << AES::encrypt(std::string{}, "123", "123") << std::endl;
 
     return 0;
 }

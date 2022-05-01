@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <ranges>
 
+#include <utils/strings.h>
+
 std::string Files::read_file(const std::string &filename) {
     std::string str( Files::file_size(filename), '\0' );
     std::ifstream file{ filename };
