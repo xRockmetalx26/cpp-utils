@@ -19,6 +19,6 @@ namespace Matrixs {
     std::string to_string(T **first, T **last, std::size_t columns);
 };
 
-#include <utils/tcc/matrixs.tcc>
+#include <tpp/utils/matrixs.tpp>
 
 #endif // MATRIXS_H

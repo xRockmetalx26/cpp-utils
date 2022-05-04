@@ -19,6 +19,6 @@ namespace Arrays {
     std::string to_string(T *first, T *last);
 };
 
-#include <utils/tcc/arrays.tcc>
+#include <tpp/utils/arrays.tpp>
 
 #endif // ARRAYS_H

@@ -42,7 +42,7 @@ std::string Matrixs::to_string(T **first, T **last, std::size_t columns) {
             stream.seekp(static_cast<std::size_t>(stream.tellp()) - 2);
         }
 
-        stream << "]";
+        stream << "], ";
     }
 
     stream << "]";

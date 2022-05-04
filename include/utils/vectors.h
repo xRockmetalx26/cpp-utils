@@ -19,6 +19,6 @@ namespace Vectors {
     void print(const std::vector<T> &vect, std::ostream &os = std::cout);
 };
 
-#include <utils/tcc/vectors.tcc>
+#include <tpp/utils/vectors.tpp>
 
 #endif // VECTORS_H

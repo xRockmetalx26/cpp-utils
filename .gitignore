@@ -1,8 +1,5 @@
-*.o
-*.exe
 backup
-obj
-output
+build
 .vscode
 data
 assets
