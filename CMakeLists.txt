@@ -45,4 +45,3 @@ add_executable(${APP} ${C_FILES} ${CPP_FILES} ${RES_FILES} ${H_FILES})
 
 # LINKED CONFIGURATION
 target_link_libraries(${APP} ${LIB_FILES})
-

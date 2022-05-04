@@ -72,7 +72,7 @@ int main() {
     matrix[3][2] = 15;
     matrix[3][3] = 16;
 
-    std::cout << Matrixs::to_string<int>(matrix, matrix + 4, 0) << std::endl;
+    std::cout << Matrixs::to_string<int>(matrix, matrix + 4, 4) << std::endl;
 
     return 0;
 }
