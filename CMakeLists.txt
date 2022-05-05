@@ -14,20 +14,19 @@ set(CMAKE_CXX_FLAGS "-std=c++2a -Wextra -Wall -Wpedantic -O3 -DNDEBUG")
 include_directories("include")
 
 # HEADER FILES
-FILE(GLOB_RECURSE H_FILES "include/*.h" "include/*.hpp")
+file(GLOB_RECURSE H_FILES "include/*.h" "include/*.hpp")
 
 # C SOURCE FILES
-FILE(GLOB_RECURSE C_FILES "src/*.c")
+file(GLOB_RECURSE C_FILES "src/*.c")
 
 # C++ SOURCE FILES
-FILE(GLOB_RECURSE CPP_FILES "src/*.cpp" "src/*.cc")
-
-# LIB FILES
-FILE(GLOB_RECURSE LIB_FILES "lib/*.a")
-FILE(GLOB_RECURSE LIB_FILES "lib/*.dll.a")
+file(GLOB_RECURSE CPP_FILES "src/app/*.cpp" "src/app/*.cc")
 
 # RESOURCE FILES
 set(GLOB_RECURSE RES_FILES "res/*.rc")
+
+# LIB FILES
+file(GLOB_RECURSE LIB_FILES "lib/*.a" "lib/*.dll.a")
 
 # EXECUTABLE NAME
 set(APP "app")
@@ -40,7 +39,7 @@ set(LIBRARY_OUTPUT_PATH "lib")
 #add_library(app_static STATIC SOURCE_FILES)
 #add_library(app_shared SHARED SOURCE_FILES)
 
-# EXECUTABLES CONFIGURATION
+# APP EXECUTABLE
 add_executable(${APP} ${C_FILES} ${CPP_FILES} ${RES_FILES} ${H_FILES})
 
 # LINKED CONFIGURATION
