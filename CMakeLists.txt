@@ -1,9 +1,6 @@
 # PROJECT NAME
 project(app)
 
-# CMAKE VERSION
-cmake_minimum_required(VERSION "3.22.1")
-
 # C FLAGS
 set(CMAKE_C_FLAGS "-std=c18 -Wextra -Wall -Wpedantic -O3 -DNDEBUG")
 
@@ -20,12 +17,12 @@ file(GLOB_RECURSE H_FILES "include/*.h" "include/*.hpp")
 file(GLOB_RECURSE C_FILES "src/*.c")
 
 # C++ SOURCE FILES
-file(GLOB_RECURSE CPP_FILES "src/app/*.cpp" "src/app/*.cc")
+file(GLOB_RECURSE CPP_FILES "src/*.cpp" "src/*.cc")
 
 # RESOURCE FILES
-set(GLOB_RECURSE RES_FILES "res/*.rc")
+file(GLOB_RECURSE RES_FILES "res/*.rc")
 
-# LIB FILES
+# LIBRARY FILES
 file(GLOB_RECURSE LIB_FILES "lib/*.a" "lib/*.dll.a")
 
 # EXECUTABLE NAME
